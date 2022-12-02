@@ -1,33 +1,33 @@
-import Logo from './img/argentBankLogo.png';
-import IconChat from './img/icon-chat.png';
-import IconMoney from './img/icon-money.png';
-import IconSecurity from './img/icon-security.png';
-import styles from './sass/Home.module.scss';
+import Logo from '../img/argentBankLogo.png';
+import IconChat from '../img/icon-chat.png';
+import IconMoney from '../img/icon-money.png';
+import IconSecurity from '../img/icon-security.png';
+import styles from '../sass/Home.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
-export function Index() {
+export function Home() {
   return (
-    <body>
+    <>
       <nav className={styles.mainNav}>
-        {/*  TODO route vers  Home.jsx */}
-        <a className={styles.mainNavLogo} href="./index.html">
+        <Link className={styles.mainNavLogo} to={'/Home'}>
           <img
             className={styles.mainNavLogoImage}
             src={Logo}
             alt="Argent Bank Logo"
           />
           <h1 className={styles.srOnly}>Argent Bank</h1>
-        </a>
+        </Link>
         <div>
-          {/* TODO route vers sign-in.jsx */}
-          <a className="mainNavItem" href="./sign-in.html">
-            {/* TODO fontawesome icon balise */}
-            <i className="fa fa-user-circle"></i>
+          <Link className="mainNavItem" to={'/SignIn'}>
+            <FontAwesomeIcon icon={faUserCircle} />
             Sign In
-          </a>
+          </Link>
         </div>
       </nav>
       <main>
-        <div classNameName={styles.hero}>
+        <div className={styles.hero}>
           <section className={styles.heroContent}>
             <h2 className={styles.srOnly}>Promoted Content</h2>
             <p className={styles.subtitle}>No fees.</p>
@@ -82,6 +82,6 @@ export function Index() {
       <footer className={styles.footer}>
         <p className={styles.footerText}>Copyright 2020 Argent Bank</p>
       </footer>
-    </body>
+    </>
   );
 }
