@@ -1,30 +1,18 @@
-import Logo from '../img/argentBankLogo.png';
 import styles from '../sass/Sign-In.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { MainLayout } from '../components/MainLayout/MainLayout';
+import styled from 'styled-components';
+
+const MainBackground = styled.div`
+  background-color: #12002b;
+`;
 
 export function SignIn() {
   return (
-    <>
-      <nav class={styles.mainNav}>
-        <Link class={styles.mainNavLogo} to={'/Home'}>
-          <img
-            class={styles.mainNavLogoImage}
-            src={Logo}
-            alt="Argent Bank Logo"
-          />
-          <h1 class={styles.srOnly}>Argent Bank</h1>
-        </Link>
-        <div>
-          <Link class={styles.mainNavItem} to={'/SignIn'}>
-            <FontAwesomeIcon icon={faUserCircle} />
-            Sign In
-          </Link>
-        </div>
-      </nav>
-      {/* TODO 2 classes ici */}
-      <main class="{styles.main bgDark}">
+    <MainLayout>
+      <MainBackground class={styles.main}>
         <section class={styles.signInContent}>
           <FontAwesomeIcon icon={faUserCircle} className={styles.signInIcon} />
           <h1>Sign In</h1>
@@ -51,10 +39,7 @@ export function SignIn() {
             {/* <!--  --> */}
           </form>
         </section>
-      </main>
-      <footer class={styles.footer}>
-        <p class={styles.footerText}>Copyright 2020 Argent Bank</p>
-      </footer>
-    </>
+      </MainBackground>
+    </MainLayout>
   );
 }
