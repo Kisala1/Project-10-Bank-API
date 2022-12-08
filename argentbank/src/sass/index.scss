@@ -1,9 +1,11 @@
+@use 'themes';
+
 body {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: themes.$font-primary;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: themes.$primary-color;
     margin: 0;
     display: flex;
     flex-direction: column;

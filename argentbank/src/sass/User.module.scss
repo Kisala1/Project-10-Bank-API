@@ -2,14 +2,31 @@
 
 .header {
     color: #fff;
+    padding-top: 0.1rem;
     margin-bottom: 2rem;
 }
-.editButton {
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px;
+
+.containerEdit {
+    display: none;
+    flex-direction: column;
+
+    .containerInput {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+
+        .input {
+            padding: 10px;
+            font-weight: bold;
+        }
+    }
+
+    .containerButtons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 15px 0 0 13px;
+    }
 }
 
 .account {
@@ -20,52 +37,50 @@
     background-color: #fff;
     width: 80%;
     margin: 0 auto;
-    flex-direction: column;
+    flex-direction: row;
     padding: 1.5rem;
     box-sizing: border-box;
     text-align: left;
     margin-bottom: 2rem;
+
     .accountAmount {
         margin: 0;
         font-size: 2.5rem;
         font-weight: bold;
     }
+
     .accountAmountDescription {
         margin: 0;
     }
+
     .accountTitle {
         margin: 0;
         padding: 0;
         font-size: 1rem;
         font-weight: normal;
     }
+
     .accountContentWrapper {
         width: 100%;
         flex: 1;
     }
-}
-.transactionButton {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
-}
 
-@media (min-width: 720px) {
-    .account {
-        flex-direction: row;
-    }
-
-    .accountContentWrapper.cta {
-        flex: 0;
-    }
-
-    .transactionButton {
+    .contentButton {
         width: 200px;
+        padding: 8px;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+}
+
+
+@media (max-width: 720px) {
+    .account {
+        flex-direction: column;
+
+        .cta {
+            width: 100%;
+            flex: 1;
+        }
     }
 }

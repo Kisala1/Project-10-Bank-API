@@ -1,44 +1,39 @@
-import Logo from '../img/argentBankLogo.png';
+import { MainLayout } from '../components/MainLayout/MainLayout';
+import { Button } from '../components/Buttons/Button/Button';
+import { ButtonEdit } from '../components/Buttons/ButtonEdit/ButtonEdit';
 import styles from '../sass/User.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUserCircle,
-  faRightFromBracket,
-} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const MainBackground = styled.div`
+  background-color: #12002b;
+  min-height: 85vh;
+`;
 
 export function User() {
   return (
-    <>
-      <nav className={styles.mainNav}>
-        <Link className={styles.mainNavLogo} to={'/Home'}>
-          <img
-            className={styles.mainNavLogoImage}
-            src={Logo}
-            alt="Argent Bank Logo"
-          />
-          <h1 className={styles.srOnly}>Argent Bank</h1>
-        </Link>
-        <div>
-          <Link className={styles.mainNavItem} to={'/User'}>
-            <FontAwesomeIcon icon={faUserCircle} />
-            Tony
-          </Link>
-          <Link className={styles.mainNavItem} to={'/Home'}>
-            <FontAwesomeIcon icon={faRightFromBracket} />
-            Sign Out
-          </Link>
-        </div>
-      </nav>
-      {/* TODO 2 classes */}
-      <main className="styles.main bgDark">
+    <MainLayout>
+      <MainBackground>
         <div className={styles.header}>
           <h1>
             Welcome back
             <br />
             Tony Jarvis!
           </h1>
-          <button className={styles.editButton}>Edit Name</button>
+          <Button>Edit Name</Button>
+          <div className={styles.containerEdit}>
+            <h1>Welcome back</h1>
+            <div className={styles.containerInput}>
+              {/* TODO value = nom / prénom précédemment enregistrés */}
+              <input type="text" className={styles.input} />
+              <input type="text" className={styles.input} />
+            </div>
+            <div className={styles.containerButtons}>
+              {/* TODO Save => met à jour les données */}
+              {/* TODO Cancel => Ne change pas les données + Remet la div display none */}
+              <ButtonEdit>Save</ButtonEdit>
+              <ButtonEdit>Cancel</ButtonEdit>
+            </div>
+          </div>
         </div>
         <h2 className={styles.srOnly}>Accounts</h2>
         <section className={styles.account}>
@@ -49,11 +44,12 @@ export function User() {
             <p className={styles.accountAmount}>$2,082.79</p>
             <p className={styles.accountAmountDescription}>Available Balance</p>
           </div>
-          {/* TODO 2 classes */}
-          <div className="{styles.accountContentWrapper cta}">
-            <button className={styles.transactionButton}>
-              View transactions
-            </button>
+          <div className={styles.cta}>
+            <Button>
+              <strong className={styles.contentButton}>
+                View transactions
+              </strong>
+            </Button>
           </div>
         </section>
         <section className={styles.account}>
@@ -62,11 +58,12 @@ export function User() {
             <p className={styles.accountAmount}>$10,928.42</p>
             <p className={styles.accountAmountDescription}>Available Balance</p>
           </div>
-          {/* TODO 2 classes */}
-          <div className="styles.accountContentWrapper cta">
-            <button className={styles.transactionButton}>
-              View transactions
-            </button>
+          <div className={styles.cta}>
+            <Button className={styles.transactionButton}>
+              <strong className={styles.contentButton}>
+                View transactions
+              </strong>
+            </Button>
           </div>
         </section>
         <section className={styles.account}>
@@ -77,17 +74,15 @@ export function User() {
             <p className={styles.accountAmount}>$184.30</p>
             <p className={styles.accountAmountDescription}>Current Balance</p>
           </div>
-          {/* TODO 2 classes */}
-          <div className="styles.accountContentWrapper cta">
-            <button className={styles.transactionButton}>
-              View transactions
-            </button>
+          <div className={styles.cta}>
+            <Button className={styles.transactionButton}>
+              <strong className={styles.contentButton}>
+                View transactions
+              </strong>
+            </Button>
           </div>
         </section>
-      </main>
-      <footer className={styles.footer}>
-        <p className={styles.footerText}>Copyright 2020 Argent Bank</p>
-      </footer>
-    </>
+      </MainBackground>
+    </MainLayout>
   );
 }

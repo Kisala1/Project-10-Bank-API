@@ -1,11 +1,11 @@
+import { Link } from 'react-router-dom';
 import Logo from '../../img/argentBankLogo.png';
-import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUserCircle,
   faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import styles from './Header.module.scss';
 
 export function Header() {
   return (
@@ -19,21 +19,21 @@ export function Header() {
       </Link>
 
       <div>
-        <Link className="mainNavItem" to={'/SignIn'}>
-          <FontAwesomeIcon icon={faUserCircle} />
+        <Link className={styles.mainNavItem} to={'/SignIn'}>
+          <FontAwesomeIcon icon={faUserCircle} className={styles.icon} />
           Sign In
         </Link>
       </div>
-      {/* <div>
-          <Link className={styles.mainNavItem} to={'/User'}>
-            <FontAwesomeIcon icon={faUserCircle} />
-            Tony
-          </Link>
-          <Link className={styles.mainNavItem} to={'/Home'}>
-            <FontAwesomeIcon icon={faRightFromBracket} />
-            Sign Out
-          </Link>
-        </div> */}
+      {/* <div className={styles.logInNavItem}>
+        <Link className={styles.mainNavItem} to={'/User'}>
+          <FontAwesomeIcon icon={faUserCircle} className={styles.icon} />
+          Tony
+        </Link>
+        <Link className={styles.mainNavItem} to={'/Home'}>
+          <FontAwesomeIcon icon={faRightFromBracket} className={styles.icon} />
+          Sign Out
+        </Link>
+      </div> */}
     </div>
   );
 }

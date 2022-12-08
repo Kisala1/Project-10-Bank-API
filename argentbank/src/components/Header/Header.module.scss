@@ -1,4 +1,6 @@
-@use '../../sass/index.scss';
+@use '../../sass/themes';
+@use '../../sass/index';
+
 
 .mainNav {
     display: flex;
@@ -6,23 +8,6 @@
     align-items: center;
     padding: 5px 20px;
 
-    a {
-        font-weight: bold;
-        color: #2c3e50;
-    }
-
-    a.router-link-exact-active {
-        color: #42b983;
-    }
-
-    .mainNavItem {
-        text-decoration: none;
-        margin-right: 0.5rem;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
 
     .mainNavLogo {
         display: flex;
@@ -32,6 +17,33 @@
             max-width: 100%;
             width: 200px;
         }
+    }
+
+    .mainNavItem {
+        text-decoration: none;
+        margin-right: 0.5rem;
+        border: none;
+        font-weight: bold;
+        color: themes.$primary-color;
+
+        &:active {
+            color: #42b983;
+            text-decoration: none;
+            border: none;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        .icon {
+            margin-right: 0.4rem;
+        }
+    }
+
+    .logInNavItem {
+        display: flex;
+        gap: 10px;
     }
 
 }
