@@ -11,7 +11,7 @@ root.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route exact path="/Home" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/SignIn" element={<SignIn />} />
         <Route exact path="/SignIn/User" element={<User />} />
       </Routes>
