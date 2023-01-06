@@ -3,8 +3,8 @@ import { Navigate } from 'react-router-dom';
 import styles from './InputsSignIn.module.scss';
 
 /**
- * 
- * @returns 
+ *
+ * @returns
  */
 
 // source : https://contactmentor.com/login-form-react-js-code/
@@ -14,18 +14,6 @@ export function InputsSignIn() {
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // User Login info
-  const database = [
-    {
-      username: 'tony@stark.com',
-      password: 'password123',
-    },
-    {
-      username: 'steve@rogers.com',
-      password: 'password456',
-    },
-  ];
-
   const errors = {
     uname: 'invalid email',
     pass: 'invalid password',
@@ -34,24 +22,21 @@ export function InputsSignIn() {
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const data = JSON.stringify({ email, password });
 
-    // Find user login info
-    const userData = database.find((user) => user.username === email.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== password.value) {
-        // Invalid password
-        setErrorMessages({ name: 'pass', message: errors.pass });
-      } else {
+    fetch('http://localhost:3001/api/v1/user/login', {
+      method: 'POST',
+      body: data,
+      headers: { 'Content-type': 'application/json; charset=UTF-8' },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        localStorage.setItem('token', result.body.token);
         setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: 'uname', message: errors.uname });
-    }
+      })
+      .catch((err) => console.log(err));
   };
 
   // Generate JSX code for error message
@@ -88,12 +73,6 @@ export function InputsSignIn() {
   );
 
   return (
-    <>
-      {isSubmitted ? (
-        <Navigate to={'/SignIn/User'} replace={true} />
-      ) : (
-        renderForm
-      )}
-    </>
+    <>{isSubmitted ? <Navigate to={'/User'} replace={true} /> : renderForm}</>
   );
 }
